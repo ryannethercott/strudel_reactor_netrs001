@@ -1,18 +1,12 @@
-function soundControls() {
+function SoundControls({ value, onChange }) {
     return (
         <>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" onChange={ProcAndPlay} defaultChecked />
-                <label className="form-check-label" htmlFor="flexRadioDefault1">p1: ON</label>
-            </div>
-            <div className="form-check">
-                <input className="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" onChange={ProcAndPlay} />
-                <label className="form-check-label" htmlFor="flexRadioDefault2">
-                    p1: HUSH
-                </label>
+            <div className="row">
+                <label htmlFor="volume" className="form-label">Volume: {value}</label>
+                <input type="range" className="form-range" min="0" max="1" step="0.01"value={value} onChange={onChange} id="volume" />
             </div>
         </>
     );
 }
 
-export default soundControls;
+export default SoundControls;
