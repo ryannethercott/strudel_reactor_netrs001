@@ -1,10 +1,8 @@
 function ProcButtons(defaultValue, onProc, onProcAndPlay) {
     return (
         <>
-            <div className="btn-group" role="group" aria-label="Basic mixed styles example">
-                <button id="process" className="btn btn-outline-primary" defaultValue={defaultValue} onClick={onProc}>Preprocess</button>
-                <button id="process_play" className="btn btn-outline-primary" onClick={onProcAndPlay}>Proc & Play</button>
-            </div>
+            <button id="process" className="m-1 btn btn-outline-success" defaultValue={defaultValue} onClick={onProc}>Preprocess</button>
+            <button id="process_play" className="m-1 btn btn-outline-info" onClick={onProcAndPlay}>Proc & Play</button>
         </>
     );
 }

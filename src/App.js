@@ -47,14 +47,6 @@ const handleD3Data = (event) => {
 //    }
 //}
 
-//export function Proc() {
-
-//    let proc_text = document.getElementById('proc').value
-//    let proc_text_replaced = proc_text.replaceAll('<p1_Radio>', ProcessText);
-//    ProcessText(proc_text);
-//    globalEditor.setCode(proc_text_replaced)
-//}
-
 //export function ProcessText(match, ...args) {
 
 //    let replace = ""
@@ -69,30 +61,38 @@ export default function StrudelDemo() {
 
 const hasRun = useRef(false);
 
+    
+
     const handlePlay = () => {
         globalEditor.evaluate()
     }
 
     const handleStop = () => {
-        globalEditor.stop()
+        globalEditor.stop();
     }
 
-    const handleProcAndPlay = () => {
+    const handleProc = (e) => {
         let procText = document.getElementById('proc').value;
-        setSongText(procText.target.value)
-        globalEditor.evaluate();
+        let procTextReplaced = e.replaceAll(procText);
+        globalEditor.setCode(procTextReplaced);
+    }
+
+    const handleProcAndPlay = (e) => {
+        let procText = document.getElementById('proc').value;
+        setSongText(procText.target.value);
+        handlePlay();
     }
  
-    const [songText, setSongText] = useState(stranger_tune)
+    const [songText, setSongText] = useState(stranger_tune);
 
-    const [volume, setVolume] = useState('1')
+    const [volume, setVolume] = useState('1');
 
-    const handleVolume = (event) => {
-        setVolume(event.target.value)
+    const handleVolume = (e) => {
+        setVolume(e.target.value);
         if (globalEditor != null) {
             let volumeText = document.getElementById('proc').value;
-            let volumeTextReplaced = volumeText.replaceAll('{VOLUME}', '+' + event.target.value);
-            globalEditor.setCode(volumeTextReplaced)
+            let volumeTextReplaced = volumeText.replaceAll('{VOLUME}', + e.target.value);
+            globalEditor.setCode(volumeTextReplaced);
             handlePlay()
         }
     }
@@ -130,7 +130,7 @@ useEffect(() => {
                 },
             });
             
-        document.getElementById('proc').value = stranger_tune
+        document.getElementById('proc').value = stranger_tune;
         //SetupButtons()
         //Proc()
     }
@@ -140,25 +140,28 @@ useEffect(() => {
 
 return (
     <div>
+        <div className="App-header">
         <h2>Strudel Demo</h2>
+        </div>
         <main>
             <div className="container-fluid">
                 <div className="row">
-                    <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
-                    <div className="col-md-4">
+                    <div className="col-md-8" style={{ maxHeight: '45vh', overflowY: 'auto' }}>
+                        <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
+                    </div>
+                    <div className="col-md-4 border">
                         <nav>
-                            <ProcButtons defaultValue={songText} onProc={(e) => setSongText(e.target.value)} onProcAndPlay={handleProcAndPlay} />
-                            <br />
+                            <ProcButtons defaultValue={songText} onProc={handleProc} onProcAndPlay={handleProcAndPlay} />
                             <PlayButtons onStop={handleStop} onPlay={handlePlay} />
                         </nav>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="col-md-8" style={{ maxHeight: '50vh', overflowY: 'auto' }}>
+                    <div className="col-md-8"  style={{ maxHeight: '45vh', overflowY: 'auto' }}>
                         <div id="editor" />
                         <div id="output" />
                     </div>
-                    <div className="col-md-4">
+                    <div className="col-md-4 border">
                         <SoundControls value={volume} onChange={handleVolume} />
                     </div>
                 </div>
