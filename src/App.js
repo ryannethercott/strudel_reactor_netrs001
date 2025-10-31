@@ -144,12 +144,13 @@ const hasRun = useRef(false);
         //console.log(stringArray);
         for (const item of stringArray) {
             if (item.startsWith('.gain')) {
-                let val = item.substring(6,9)
+                let val = item.substring(6, 9)
                 //console.log(val)
-                volumeText.replaceAll(val, String(volume));
+                let volumeTextReplaced = volumeText.replaceAll(val, String(volume));
+                globalEditor.setCode(volumeTextReplaced);
             };
         };
-    }, [volume])
+    }, [volume]);
 
 
     return (
