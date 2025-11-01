@@ -13,6 +13,7 @@ import SoundControls from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import ProcButtons from './components/ProcButtons';
 import PreProcessTextArea from './components/PreProcessTextArea'
+import SaveButtons from './components/SaveButtons';
 
 let globalEditor = null;
 
@@ -65,7 +66,7 @@ export default function StrudelDemo() {
 const hasRun = useRef(false);
 
     const handlePlay = () => {
-        globalEditor.evaluate()
+        globalEditor.evaluate();
     }
 
     const handleStop = () => {
@@ -73,14 +74,11 @@ const hasRun = useRef(false);
     }
 
     const handleProc = () => {
-        let procText = document.getElementById('proc').value;
-        let procTextReplaced = procText.replaceAll(procText);
-        globalEditor.setCode(procTextReplaced);
+        setSongText([songText, document.getElementById('proc').value]);
     }
 
-    const handleProcAndPlay = (e) => {
-        let procText = document.getElementById('proc').value;
-        setSongText(procText.target.value);
+    const handleProcAndPlay = () => {
+        handleProc();
         handlePlay();
     }
  
@@ -88,15 +86,7 @@ const hasRun = useRef(false);
 
     const [volume, setVolume] = useState('1');
 
-    //const handleVolume = (e) => {
-    //    setVolume(e.target.value);
-    //    if (globalEditor != null) {
-    //        let volumeText = document.getElementById('proc').value;
-    //        let volumeTextReplaced = volumeText.replaceAll(ProcessText(getD3Data));
-    //        globalEditor.setCode(volumeTextReplaced);
-    //        handlePlay()
-    //    }
-    //}
+    const [speed, setSpeed] = useState('1')
      
     useEffect(() => {
 
@@ -132,26 +122,38 @@ const hasRun = useRef(false);
                 });
             
             document.getElementById('proc').value = stranger_tune;
-            //SetupButtons()
-            //Proc()
+            //handleProc()
         }
         globalEditor.setCode(songText);
     }, [songText]);
 
+    // TODO 
+    // fix math for volume change. 
+    // fix string selection.
     useEffect(() => {
+
         let volumeText = document.getElementById('proc').value;
-        var stringArray = volumeText.split(/(\n  )/);
-        //console.log(stringArray);
+        var stringArray = volumeText.split(/(\s+)/);
+            //console.log(stringArray);   
         for (const item of stringArray) {
             if (item.startsWith('.gain')) {
+                //console.log(item);   
                 let val = item.substring(6, 9)
-                //console.log(val)
-                let volumeTextReplaced = volumeText.replaceAll(val, String(volume));
+                let finalVal = Number(volume) - Number(val)
+                //console.log(finalVal)
+                let volumeTextReplaced = volumeText.replaceAll(val, String(finalVal));
                 globalEditor.setCode(volumeTextReplaced);
             };
         };
     }, [volume]);
 
+    useEffect((e) => {
+
+        let speedText = document.getElementById('proc').value;
+        let speedTextReplaced = speedText.replaceAll(e, speed);
+        globalEditor.setCode(speedTextReplaced);
+        
+    },[speed])
 
     return (
         <div>
@@ -168,6 +170,7 @@ const hasRun = useRef(false);
                             <nav>
                                 <ProcButtons defaultValue={songText} onProc={handleProc} onProcAndPlay={handleProcAndPlay} />
                                 <PlayButtons onStop={handleStop} onPlay={handlePlay} />
+                                <SaveButtons />
                             </nav>
                         </div>
                     </div>
@@ -177,7 +180,9 @@ const hasRun = useRef(false);
                             <div id="output" />
                         </div>
                         <div className="col-md-4 border">
-                            <SoundControls value={volume} onChange={(e) => setVolume(e.target.value)} />
+                            <SoundControls
+                                volumeValue={volume} onVolumeChange={(e) => setVolume(e.target.value)}
+                                speedValue={speed} onSpeedChange={(e) => setSpeed(e.target.value)} />
                         </div>
                     </div>
                 </div>
