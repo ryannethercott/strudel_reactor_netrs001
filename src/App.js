@@ -86,7 +86,7 @@ const hasRun = useRef(false);
 
     const [volume, setVolume] = useState('1');
 
-    const [speed, setSpeed] = useState('1')
+    const [speed, setSpeed] = useState('0.6')
      
     useEffect(() => {
 
@@ -145,14 +145,24 @@ const hasRun = useRef(false);
                 globalEditor.setCode(volumeTextReplaced);
             };
         };
+        handlePlay();
     }, [volume]);
 
     useEffect((e) => {
 
         let speedText = document.getElementById('proc').value;
-        let speedTextReplaced = speedText.replaceAll(e, speed);
-        globalEditor.setCode(speedTextReplaced);
-        
+        var stringArray = speedText.split(/(\s+)/);
+        //console.log(stringArray);   
+        for (const item of stringArray) {
+            if (item.startsWith('setcps')) {
+                //console.log(item);   
+                let val = item.substring(7, 10);
+                //console.log(finalVal)
+                let speedTextReplaced = speedText.replaceAll(val, speed);
+                globalEditor.setCode(speedTextReplaced);
+            };
+        };
+        handlePlay();
     },[speed])
 
     return (
