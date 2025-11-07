@@ -26,7 +26,7 @@ export default function StrudelDemo() {
 const hasRun = useRef(false);
 
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: songText, volume: volume, speed: speed });
+        let outputText = Preprocess({ inputText: songText, volume: volume, speed: speed, pattern: pattern });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
@@ -39,15 +39,17 @@ const hasRun = useRef(false);
 
     const [volume, setVolume] = useState('1');
 
-    const [speed, setSpeed] = useState('0.6')
+    const [speed, setSpeed] = useState('0.6');
 
     const [state, setState] = useState("stop");
+
+    const [pattern, setPattern] = useState('0');
 
     useEffect(() => {
         if (state === "play") {
             handlePlay();
         }
-    }, [volume, speed]);
+    }, [volume, speed, pattern]);
 
     useEffect(() => {
 
@@ -105,14 +107,15 @@ const hasRun = useRef(false);
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-8"  style={{ maxHeight: '45vh', overflowY: 'auto' }}>
+                        <div className="col-md-8"  style={{ maxHeight: '80vh', overflowY: 'auto' }}>
                             <div id="editor" />
                             <div id="output" />
                         </div>
-                        <div className="col-md-4 border">
+                        <div className="col-md-4 card">
                             <SoundControls
                                 volumeValue={volume} onVolumeChange={(e) => setVolume(e.target.value)}
                                 speedValue={speed} onSpeedChange={(e) => setSpeed(e.target.value)}
+                                patternValue={pattern} onPatternChange={(e) => setPattern(e.target.value)}
                             />
                         </div>
                     </div>

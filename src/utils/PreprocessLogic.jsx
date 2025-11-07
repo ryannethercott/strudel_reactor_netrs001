@@ -1,4 +1,4 @@
-function Preprocess({ inputText, volume, speed }) {
+function Preprocess({ inputText, volume, speed, pattern, bass }) {
 
     let outputText = inputText;
 
@@ -24,18 +24,20 @@ function Preprocess({ inputText, volume, speed }) {
 
     outputText = matches.reduce((text, original, i) => text.replaceAll(original, matches2[i]), outputText);
 
-    console.log(outputText);
+    //console.log(outputText);
 
     var stringArray = outputText.split(/(\s+)/);
-    //console.log(stringArray);   
+    console.log(stringArray);   
     for (const item of stringArray) {
         if (item.startsWith('setcps')) {
             //console.log(item);   
             let val = item.substring(7, 10);
-            //console.log(finalVal)
             outputText = outputText.replaceAll(val, speed);
         }
     }
+
+    outputText = outputText.replaceAll("{$PATTERN}", pattern);
+
     return outputText;
 }
 export default Preprocess;
