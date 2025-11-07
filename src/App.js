@@ -10,7 +10,7 @@ import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
-import SoundControls from './components/soundControls';
+import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import PreProcessTextArea from './components/PreProcessTextArea';
 import SaveButtons from './components/SaveButtons';
@@ -44,6 +44,22 @@ const hasRun = useRef(false);
     const [state, setState] = useState("stop");
 
     const [pattern, setPattern] = useState('0');
+
+    const [baselineVol, setBaselineVol] = useState('0');
+
+    const [baselineSpeed, setBaselineSpeed] = useState('0');
+
+    const [mainARPVol, setMainARPVol] = useState('0');
+
+    const [mainARPSpeed, setMainARPSpeed] = useState('0');
+
+    const [drumsVol, setDrumsVol] = useState('0');
+
+    const [drumsSpeed, setDrumsSpeed] = useState('0');
+
+    const [drums2Vol, setDrums2Vol] = useState('0');
+
+    const [drums2Speed, setDrums2Speed] = useState('0');
 
     useEffect(() => {
         if (state === "play") {
@@ -111,11 +127,21 @@ const hasRun = useRef(false);
                             <div id="editor" />
                             <div id="output" />
                         </div>
-                        <div className="col-md-4 card">
-                            <SoundControls
+                        <div className="col-md-4 card text-bg-dark">
+                            <GlobalSoundControls
                                 volumeValue={volume} onVolumeChange={(e) => setVolume(e.target.value)}
                                 speedValue={speed} onSpeedChange={(e) => setSpeed(e.target.value)}
                                 patternValue={pattern} onPatternChange={(e) => setPattern(e.target.value)}
+                            />
+                            <InstrumentControls
+                                blVolumeValue={baselineVol} onBLVolumeChange={(e) => setBaselineVol(e.target.value)}
+                                blValueSpeed={baselineSpeed} onBLSpeedChange={(e) => setBaselineSpeed(e.target.value)}
+                                mainARPVolumeValue={mainARPVol} onMainARPVolumeChange={(e) => setMainARPVol(e.target.value)}
+                                mainARPValueSpeed={mainARPSpeed} onMainARPSpeedChange={(e) => setMainARPSpeed(e.target.value)}
+                                drumsVolumeValue={drumsVol} onDrumsVolumeChange={(e) => setDrumsVol(e.target.value)}
+                                drumsValueSpeed={drumsSpeed} onDrumsSpeedChange={(e) => setDrumsSpeed(e.target.value)}
+                                drums2VolumeValue={drums2Vol} onDrums2VolumeChange={(e) => setDrums2Vol(e.target.value)}
+                                drums2ValueSpeed={drums2Speed} onDrums2SpeedChange={(e) => setDrums2Speed(e.target.value)}
                             />
                         </div>
                     </div>

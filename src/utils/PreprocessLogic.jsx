@@ -1,4 +1,4 @@
-function Preprocess({ inputText, volume, speed, pattern, bass }) {
+function Preprocess({ inputText, volume, speed, pattern }) {
 
     let outputText = inputText;
 
