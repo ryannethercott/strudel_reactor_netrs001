@@ -2,9 +2,8 @@ function SoundControls({ volumeValue, valueSpeed, onVolumeChange, onSpeedChange 
     return (
         <>
             <div className="row m-1 form-control">
-                <label htmlFor="volume" className="form-label">Volume: {volumeValue * 100}</label>
-                <input type="range" className="form-range" min="0" max="1" step="0.01"
-                    value={volumeValue} onChange={onVolumeChange} id="volume" />
+                <label htmlFor="volume" className="form-label">Volume: {volumeValue * 100}%</label>
+                <input type="range" className="form-range" min="0" max="1" step="0.01" defaultValue="1" onMouseUp={onVolumeChange} id="volume" />
             </div>
             <div className="row m-1 form-control">
                 <div className="row">

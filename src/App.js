@@ -9,10 +9,10 @@ import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/w
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
+import Preprocess from './utils/PreprocessLogic';
 import SoundControls from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
-import ProcButtons from './components/ProcButtons';
-import PreProcessTextArea from './components/PreProcessTextArea'
+import PreProcessTextArea from './components/PreProcessTextArea';
 import SaveButtons from './components/SaveButtons';
 
 let globalEditor = null;
@@ -21,65 +21,18 @@ const handleD3Data = (event) => {
     console.log(event.detail);
 };
 
-//export function SetupButtons() {
-
-//    document.getElementById('play').addEventListener('click', () => globalEditor.evaluate());
-//    document.getElementById('stop').addEventListener('click', () => globalEditor.stop());
-//    document.getElementById('process').addEventListener('click', () => {
-//        Proc()
-//    }
-//    )
-//    document.getElementById('process_play').addEventListener('click', () => {
-//        if (globalEditor != null) {
-//            Proc()
-//            globalEditor.evaluate()
-//        }
-//    }
-//    )
-//}
-
-
-
-//export function ProcAndPlay() {
-//    if (globalEditor != null && globalEditor.repl.state.started == true) {
-//        console.log(globalEditor)
-//        Proc()
-//        globalEditor.evaluate();
-//    }
-//}
-
-//export function ProcessText(input) {
-
-//    var stringArray = input.split(/(\s+)/);
-
-//    for (const item of stringArray) {
-//        if (item.startsWith('gain:')) {
-//            let val = item.substring(5)
-//            return Number(val)
-//        }
-//    }
-//    return 0;
-//}
-
 export default function StrudelDemo() {
 
 const hasRun = useRef(false);
 
     const handlePlay = () => {
+        let outputText = Preprocess({ inputText: songText, volume: volume, speed: speed });
+        globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
 
     const handleStop = () => {
         globalEditor.stop();
-    }
-
-    const handleProc = () => {
-        setSongText([songText, document.getElementById('proc').value]);
-    }
-
-    const handleProcAndPlay = () => {
-        handleProc();
-        handlePlay();
     }
  
     const [songText, setSongText] = useState(stranger_tune);
@@ -87,7 +40,15 @@ const hasRun = useRef(false);
     const [volume, setVolume] = useState('1');
 
     const [speed, setSpeed] = useState('0.6')
-     
+
+    const [state, setState] = useState("stop");
+
+    useEffect(() => {
+        if (state === "play") {
+            handlePlay();
+        }
+    }, [volume, speed]);
+
     useEffect(() => {
 
         if (!hasRun.current) {
@@ -120,50 +81,10 @@ const hasRun = useRef(false);
                         await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                     },
                 });
-            
             document.getElementById('proc').value = stranger_tune;
-            //handleProc()
         }
         globalEditor.setCode(songText);
     }, [songText]);
-
-    // TODO 
-    // fix math for volume change. 
-    // fix string selection.
-    useEffect(() => {
-
-        let volumeText = document.getElementById('proc').value;
-        var stringArray = volumeText.split(/(\s+)/);
-            //console.log(stringArray);   
-        for (const item of stringArray) {
-            if (item.startsWith('.gain')) {
-                //console.log(item);   
-                let val = item.substring(6, 9)
-                let finalVal = Number(volume) - Number(val)
-                //console.log(finalVal)
-                let volumeTextReplaced = volumeText.replaceAll(val, String(finalVal));
-                globalEditor.setCode(volumeTextReplaced);
-            };
-        };
-        handlePlay();
-    }, [volume]);
-
-    useEffect((e) => {
-
-        let speedText = document.getElementById('proc').value;
-        var stringArray = speedText.split(/(\s+)/);
-        //console.log(stringArray);   
-        for (const item of stringArray) {
-            if (item.startsWith('setcps')) {
-                //console.log(item);   
-                let val = item.substring(7, 10);
-                //console.log(finalVal)
-                let speedTextReplaced = speedText.replaceAll(val, speed);
-                globalEditor.setCode(speedTextReplaced);
-            };
-        };
-        handlePlay();
-    },[speed])
 
     return (
         <div>
@@ -173,15 +94,14 @@ const hasRun = useRef(false);
             <main>
                 <div className="container-fluid">
                     <div className="row">
+                        <nav>
+                            <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
+                            {/*<SaveButtons />*/}
+                        </nav>
+                    </div>
+                    <div className="row">
                         <div className="col-md-8" style={{ maxHeight: '45vh', overflowY: 'auto' }}>
                             <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
-                        </div>
-                        <div className="col-md-4 border">
-                            <nav>
-                                <ProcButtons defaultValue={songText} onProc={handleProc} onProcAndPlay={handleProcAndPlay} />
-                                <PlayButtons onStop={handleStop} onPlay={handlePlay} />
-                                <SaveButtons />
-                            </nav>
                         </div>
                     </div>
                     <div className="row">
@@ -192,7 +112,8 @@ const hasRun = useRef(false);
                         <div className="col-md-4 border">
                             <SoundControls
                                 volumeValue={volume} onVolumeChange={(e) => setVolume(e.target.value)}
-                                speedValue={speed} onSpeedChange={(e) => setSpeed(e.target.value)} />
+                                speedValue={speed} onSpeedChange={(e) => setSpeed(e.target.value)}
+                            />
                         </div>
                     </div>
                 </div>

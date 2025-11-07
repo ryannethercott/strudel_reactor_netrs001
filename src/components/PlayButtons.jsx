@@ -1,9 +1,12 @@
 function PlayButtons({ onPlay, onStop }) {
     return (
         <>
-            <div className="row m-1">
-                <button id="play" className="m-1 btn btn-primary" onClick={ onPlay }>Play</button>
-                <button id="stop" className="m-1 btn btn-danger" onClick={onStop}>Stop</button>
+            <div className="text-center">
+                <input type="radio" className="btn-check" name="btnradio" id="play" onClick={onPlay} />
+                <label className="btn btn-outline-primary m-1" htmlFor="play">Play</label>
+
+                <input type="radio" className="btn-check" name="btnradio" id="stop" onClick={onStop} />
+                <label className="btn btn-outline-danger m-1" htmlFor="stop">Stop</label>
             </div>
         </>
     );
