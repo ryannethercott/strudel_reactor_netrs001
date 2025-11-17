@@ -11,6 +11,7 @@ import { stranger_tune, outrun, Riding_the_46_Cycles } from './tunes';
 import { Collapse } from 'bootstrap';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
+import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import PreProcessTextArea from './components/PreProcessTextArea';
@@ -29,6 +30,7 @@ export default function StrudelDemo() {
 
     const handlePlay = () => {
         let outputText = Preprocess({ inputText: songText, volume: volume, speed: speed, pattern: pattern });
+        //outputText = InstrumentControlsPreprocess({ inputText: songText, baselineVol: baselineVol, mainARPVol: mainARPVol, drumsVol: drumsVol, drums2Vol: drums2Vol });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
@@ -59,17 +61,17 @@ export default function StrudelDemo() {
 
     const [volume, setVolume] = useState('1');
 
-    const [speed, setSpeed] = useState('0.6');
+    const [speed, setSpeed] = useState('35');
 
     const [state, setState] = useState("stop");
 
     const [pattern, setPattern] = useState('0');
 
-    const [baselineVol, setBaselineVol] = useState('0');
+    const [baselineVol, setBaselineVol] = useState('1');
 
     const [baselineSpeed, setBaselineSpeed] = useState('0');
 
-    const [mainARPVol, setMainARPVol] = useState('0');
+    const [mainARPVol, setMainARPVol] = useState('1');
 
     const [mainARPSpeed, setMainARPSpeed] = useState('0');
 
@@ -163,7 +165,7 @@ export default function StrudelDemo() {
                                 patternValue={pattern} onPatternChange={(e) => setPattern(e.target.value)}
                             />
                             <InstrumentControls
-                                blVolumeValue={baselineVol} onBLVolumeChange={(e) => setBaselineVol(e.target.value)}
+                                baselineVol={baselineVol} onBaselineVolChange={(e) => setBaselineVol(e.target.value)}
                                 blValueSpeed={baselineSpeed} onBLSpeedChange={(e) => setBaselineSpeed(e.target.value)}
                                 mainARPVolumeValue={mainARPVol} onMainARPVolumeChange={(e) => setMainARPVol(e.target.value)}
                                 mainARPValueSpeed={mainARPSpeed} onMainARPSpeedChange={(e) => setMainARPSpeed(e.target.value)}

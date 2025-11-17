@@ -15,8 +15,8 @@ function GlobalSoundControls({
                 <div className="row m-1 form-control">
                     <div className="row">
                         <label htmlFor="speed" className="form-label">Speed</label>
-                        <input type="number" className="form-control" min="0" max="1" step="0.01"
-                            value={valueSpeed} onChange={onSpeedChange} id="speed" defaultValue="0.6" />
+                        <input type="number" className="form-control" min="1" max="100" step="1"
+                            value={valueSpeed} onChange={onSpeedChange} id="speed" defaultValue="35" />
                     </div> 
                 </div>
 
