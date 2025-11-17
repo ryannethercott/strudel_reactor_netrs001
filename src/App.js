@@ -8,6 +8,7 @@ import { transpiler } from '@strudel/transpiler';
 import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio';
 import { registerSoundfonts } from '@strudel/soundfonts';
 import { stranger_tune } from './tunes';
+import { Collapse } from 'bootstrap';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
@@ -60,6 +61,14 @@ const hasRun = useRef(false);
     const [drums2Vol, setDrums2Vol] = useState('0');
 
     const [drums2Speed, setDrums2Speed] = useState('0');
+
+    const [open, setOpen] = useState(false);
+
+    useEffect(() => {
+        var myCollapse = document.getElementById('collapseTarget')
+        var bsCollapse = new Collapse(myCollapse, { toggle: false })
+        open ? bsCollapse.show() : bsCollapse.hide()
+    }, [open])
 
     useEffect(() => {
         if (state === "play") {
@@ -119,7 +128,7 @@ const hasRun = useRef(false);
                     </div>
                     <div className="row">
                         <div className="col-md-8" style={{ maxHeight: '45vh', overflowY: 'auto' }}>
-                            <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} />
+                            <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} onClick={(e) => setOpen(open => !open)} />
                         </div>
                     </div>
                     <div className="row">
