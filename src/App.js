@@ -38,13 +38,20 @@ export default function StrudelDemo() {
     }
 
     const handleSongChange = (e) => {
-        if (e.id === "stranger_tune") {
+        if (e === "stranger_tune") {
             setSongText(stranger_tune);
             globalEditor.setCode(songText);
+            document.getElementById('proc').value = songText;
         }
-        if (e.id === "outrun") {
+        if (e === "outrun") {
             setSongText(outrun);
             globalEditor.setCode(songText);
+            document.getElementById('proc').value = songText;
+        }
+        if (e === "song3") {
+            setSongText(outrun);
+            globalEditor.setCode(songText);
+            document.getElementById('proc').value = songText;
         }
     }
  
@@ -120,8 +127,8 @@ export default function StrudelDemo() {
                         await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                     },
                 });
-            document.getElementById('proc').value = songText;
         }
+        document.getElementById('proc').value = songText;
         globalEditor.setCode(songText);
     }, [songText]);
 
@@ -135,7 +142,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SelectSongDropdown changeSong={(e) => handleSongChange(e)} />
+                            <SelectSongDropdown changeSong={(e) => handleSongChange(e.target.id)} />
                             {/*<SaveButtons />*/}
                         </nav>
                     </div>

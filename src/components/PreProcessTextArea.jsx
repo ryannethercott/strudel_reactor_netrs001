@@ -6,7 +6,7 @@ function PreProcessTextArea({ defaultValue, onChange, onClick }) {
                 Edit text for preprocess
             </button>
             <div className="collapse m-1" id="collapseTarget">
-                <textarea className="form-control" id="proc" defaultValue={defaultValue} onChange={onChange} style={{ height: "40vh" }}></textarea>
+                <textarea className="form-control" id="proc" onChange={onChange} style={{ height: "40vh" }}></textarea>
             </div>
         </>
     );

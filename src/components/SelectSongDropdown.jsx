@@ -8,7 +8,7 @@ function SelectSongDropdown({ changeSong }) {
                 <ul className="dropdown-menu">
                     <li><button className="dropdown-item" type="button" id="stranger_tune" onClick={changeSong}>Stranger Tune</button></li>
                     <li><button className="dropdown-item" type="button" id="outrun" onClick={changeSong}>Outrun</button></li>
-                    <li><button className="dropdown-item" type="button" id="song3" onClick={changeSong}>Song 3</button></li>z
+                    <li><button className="dropdown-item" type="button" id="song3" onClick={changeSong}>Song 3</button></li>
                 </ul>
             </div>
         </>
