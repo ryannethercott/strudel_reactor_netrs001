@@ -26,8 +26,7 @@ function Preprocess({ inputText, volume, speed, pattern }) {
 
     //console.log(outputText);
 
-    var stringArray = outputText.split(/(\s+)/);
-    console.log(stringArray);   
+    var stringArray = outputText.split(/(\s+)/);  
     for (const item of stringArray) {
         if (item.startsWith('setcps')) {
             //console.log(item);   

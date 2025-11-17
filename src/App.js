@@ -7,7 +7,7 @@ import { initAudioOnFirstClick } from '@strudel/webaudio';
 import { transpiler } from '@strudel/transpiler';
 import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio';
 import { registerSoundfonts } from '@strudel/soundfonts';
-import { stranger_tune, outrun } from './tunes';
+import { stranger_tune, outrun, Riding_the_46_Cycles } from './tunes';
 import { Collapse } from 'bootstrap';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
@@ -48,8 +48,8 @@ export default function StrudelDemo() {
             globalEditor.setCode(songText);
             document.getElementById('proc').value = songText;
         }
-        if (e === "song3") {
-            setSongText(outrun);
+        if (e === "Riding_the_46_Cycles") {
+            setSongText(Riding_the_46_Cycles);
             globalEditor.setCode(songText);
             document.getElementById('proc').value = songText;
         }
@@ -152,7 +152,7 @@ export default function StrudelDemo() {
                         </div>
                     </div>
                     <div className="row">
-                        <div className="col-md-8"  style={{ maxHeight: '80vh', overflowY: 'auto' }}>
+                        <div className="col-md-8"  style={{ maxHeight: '75vh', overflowY: 'auto' }}>
                             <div id="editor" />
                             <div id="output" />
                         </div>
@@ -179,6 +179,4 @@ export default function StrudelDemo() {
             </main >
         </div >
     );
-
-
 }
