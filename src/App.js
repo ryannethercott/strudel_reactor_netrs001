@@ -7,7 +7,7 @@ import { initAudioOnFirstClick } from '@strudel/webaudio';
 import { transpiler } from '@strudel/transpiler';
 import { getAudioContext, webaudioOutput, registerSynthSounds } from '@strudel/webaudio';
 import { registerSoundfonts } from '@strudel/soundfonts';
-import { stranger_tune } from './tunes';
+import { stranger_tune, outrun } from './tunes';
 import { Collapse } from 'bootstrap';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
@@ -15,6 +15,7 @@ import GlobalSoundControls, { InstrumentControls } from './components/soundContr
 import PlayButtons from './components/PlayButtons';
 import PreProcessTextArea from './components/PreProcessTextArea';
 import SaveButtons from './components/SaveButtons';
+import SelectSongDropdown from './components/SelectSongDropdown';
 
 let globalEditor = null;
 
@@ -24,7 +25,7 @@ const handleD3Data = (event) => {
 
 export default function StrudelDemo() {
 
-const hasRun = useRef(false);
+    const hasRun = useRef(false);
 
     const handlePlay = () => {
         let outputText = Preprocess({ inputText: songText, volume: volume, speed: speed, pattern: pattern });
@@ -34,6 +35,17 @@ const hasRun = useRef(false);
 
     const handleStop = () => {
         globalEditor.stop();
+    }
+
+    const handleSongChange = (e) => {
+        if (e.id === "stranger_tune") {
+            setSongText(stranger_tune);
+            globalEditor.setCode(songText);
+        }
+        if (e.id === "outrun") {
+            setSongText(outrun);
+            globalEditor.setCode(songText);
+        }
     }
  
     const [songText, setSongText] = useState(stranger_tune);
@@ -108,7 +120,7 @@ const hasRun = useRef(false);
                         await Promise.all([loadModules, registerSynthSounds(), registerSoundfonts()]);
                     },
                 });
-            document.getElementById('proc').value = stranger_tune;
+            document.getElementById('proc').value = songText;
         }
         globalEditor.setCode(songText);
     }, [songText]);
@@ -123,12 +135,13 @@ const hasRun = useRef(false);
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
+                            <SelectSongDropdown changeSong={(e) => handleSongChange(e)} />
                             {/*<SaveButtons />*/}
                         </nav>
                     </div>
                     <div className="row">
-                        <div className="col-md-8" style={{ maxHeight: '45vh', overflowY: 'auto' }}>
-                            <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} onClick={(e) => setOpen(open => !open)} />
+                        <div className="col" style={{ maxHeight: '45vh', overflowY: 'auto' }}>
+                            <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} onClick={() => setOpen(open => !open)} />
                         </div>
                     </div>
                     <div className="row">
