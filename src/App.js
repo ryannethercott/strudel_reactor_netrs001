@@ -17,15 +17,15 @@ import PlayButtons from './components/PlayButtons';
 import PreProcessTextArea from './components/PreProcessTextArea';
 import SaveButtons from './components/SaveButtons';
 import SelectSongDropdown from './components/SelectSongDropdown';
+import D3Graph from './components/D3Graph';
 
 let globalEditor = null;
 
-const handleD3Data = (event) => {
-    console.log(event.detail);
-};
-
 export default function StrudelDemo() {
 
+    const handleD3Data = (event) => {
+        console.log(event.detail);
+};
     const hasRun = useRef(false);
 
     const handlePlay = () => {
@@ -58,6 +58,7 @@ export default function StrudelDemo() {
     }
  
     const [songText, setSongText] = useState(stranger_tune);
+
 
     const [volume, setVolume] = useState('1');
 
@@ -174,6 +175,11 @@ export default function StrudelDemo() {
                                 drums2VolumeValue={drums2Vol} onDrums2VolumeChange={(e) => setDrums2Vol(e.target.value)}
                                 drums2ValueSpeed={drums2Speed} onDrums2SpeedChange={(e) => setDrums2Speed(e.target.value)}
                             />
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            {/*<D3Graph data={getD3Data} />*/}
                         </div>
                     </div>
                 </div>

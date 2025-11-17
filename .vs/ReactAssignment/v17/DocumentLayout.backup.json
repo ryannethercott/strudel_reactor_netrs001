@@ -50,8 +50,7 @@
               "RelativeToolTip": "src\\components\\PlayButtons.jsx",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwAMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T03:25:52.716Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-07T03:25:52.716Z"
             },
             {
               "$type": "Document",
@@ -63,16 +62,15 @@
               "RelativeToolTip": "src\\tunes.js",
               "ViewState": "AgIAAB4AAAAAAAAAAAAAACcAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-07T03:02:22.331Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-07T03:02:22.331Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "PreprocessLogic.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\Source\\Repos\\strudel_reactor_netrs001\\src\\utils\\PreprocessLogic.jsx",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\PreprocessLogic.jsx",
               "RelativeDocumentMoniker": "src\\utils\\PreprocessLogic.jsx",
-              "ToolTip": "C:\\Users\\ryann\\Source\\Repos\\strudel_reactor_netrs001\\src\\utils\\PreprocessLogic.jsx",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\PreprocessLogic.jsx",
               "RelativeToolTip": "src\\utils\\PreprocessLogic.jsx",
               "ViewState": "AgIAAA4AAAAAAAAAAAAAACIAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
@@ -83,14 +81,13 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "soundControls.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\Source\\Repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
               "RelativeDocumentMoniker": "src\\components\\soundControls.jsx",
-              "ToolTip": "C:\\Users\\ryann\\Source\\Repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
               "RelativeToolTip": "src\\components\\soundControls.jsx",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T01:44:05.681Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-07T01:44:05.681Z"
             },
             {
               "$type": "Document",
@@ -102,8 +99,7 @@
               "RelativeToolTip": "src\\components\\PreProcessTextArea.jsx",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T01:15:05.994Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-07T01:15:05.994Z"
             },
             {
               "$type": "Document",
@@ -115,8 +111,7 @@
               "RelativeToolTip": "src\\App.js",
               "ViewState": "AgIAAHMAAAAAAAAAAAAAAIQAAABiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-07T00:35:40.228Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-07T00:35:40.228Z"
             }
           ]
         }
