@@ -20,19 +20,6 @@ import SelectSongDropdown from './components/SelectSongDropdown';
 import D3Graph from './components/D3Graph';
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 
-function LogTofrequency(input) {
-    if (!input) { return 0 };
-    var stringArray = String(input).split(/(\s+)/);
-
-    for (const item of stringArray) {
-        if (item.startsWith('note:')) {
-            let val = item.substring(5)
-            return val;
-        }
-    }
-    return 0;
-}
-
 let globalEditor = null;
 
 export default function StrudelDemo() {
@@ -101,7 +88,7 @@ export default function StrudelDemo() {
 
         chartGroup
             .append('path')
-            .datum(d3Array.map((d) => LogToNum(d)))
+            .datum(d3Array.map((d) => LogToNote(d)))
             .attr('fill', 'none')
             .attr('stroke', 'steelblue')
             .attr('stroke-width', 1.5)
