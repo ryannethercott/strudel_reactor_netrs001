@@ -11,6 +11,7 @@ import { stranger_tune, outrun, Riding_the_46_Cycles } from './tunes';
 import { Collapse } from 'bootstrap';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
+import { LogToFrequency } from './utils/NoteToFrequencyLogic'
 import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
@@ -23,25 +24,33 @@ import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
 let globalEditor = null;
 
 export default function StrudelDemo() {
-    const [d3Data, setD3Data] = useState(0);
+
+    const handleD3Data = (event) => {
+        console.log(event.detail);
+    };
+
+    const [d3Data, setD3Data] = useState('');
     const [d3Array, setD3Array] = useState([]);
-    const maxItems = 50;
-    const timeOut = 0.1;
-    const maxValue = 1;
+    //const [note, setNote] = useState('');
+    const maxItems = 20;
+    const maxValue = 14080;
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            setD3Data(getD3Data);
-        }, timeOut)
-        return () => clearInterval(interval);
+        let data = getD3Data();
+        setD3Data(data[data.length]);
     }, []);
+
+    //useEffect(() => {
+    //    setNote(LogToNote(d3Data));
+    //    console.log("note: " + note)
+    //}, []);
 
     useEffect(() => {
         let tempArray = [...d3Array, d3Data];
         if (tempArray.length > maxItems) {
             tempArray.shift()
         }
-        setD3Array(tempArray);
+        setD3Array(tempArray); 
     }, [d3Data]);
 
     useEffect(() => {
@@ -88,7 +97,7 @@ export default function StrudelDemo() {
 
         chartGroup
             .append('path')
-            .datum(d3Array.map((d) => LogToNote(d)))
+            .datum(d3Array.map((d) => LogToFrequency(d)))
             .attr('fill', 'none')
             .attr('stroke', 'steelblue')
             .attr('stroke-width', 1.5)
@@ -110,9 +119,6 @@ export default function StrudelDemo() {
 
     }, [d3Array]);
 
-    const handleD3Data = (event) => {
-        console.log(event.detail);
-};
     const hasRun = useRef(false);
 
     const handlePlay = () => {
@@ -265,7 +271,7 @@ export default function StrudelDemo() {
                     </div>
                     <div>
                         <div>
-                            <D3Graph dataSet={d3Data} d3Array={d3Array} />
+                            <D3Graph />
                         </div>
                     </div>
                 </div>
