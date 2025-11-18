@@ -20,10 +20,9 @@ function InstrumentControlsPreprocess({
         });
     }
 
-    let baseLine = matches[0];
-    let baseLineGain = baseLine.replaceAll(/(?<!post)gain\(([\d.]+)\)/g, (match, captureGroup) => `gain(${captureGroup}*${mute})`);
+    outputText = outputText.replaceAll(regex, `_${matches[0]}`);
 
-    outputText = outputText.replaceAll(baseLine, baseLineGain);
+    //outputText = outputText.replaceAll('baseline:', muted)
 
     return outputText;
 }

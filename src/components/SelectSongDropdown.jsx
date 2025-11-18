@@ -1,7 +1,7 @@
 function SelectSongDropdown({ changeSong, songName }) {
     return (
         <>
-            <div className="dropdown">
+            <div className="col-11 m-2 dropdown">
                 <button className="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     {songName}
                 </button>

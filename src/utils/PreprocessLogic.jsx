@@ -37,7 +37,6 @@ function Preprocess({ inputText, songName, volume, speed, pattern }) {
     else {
         outputText = outputText.replaceAll(/(?<!post)gain\(([\d.]+)\)/g, (match, captureGroup) => `gain(${captureGroup}*${volume})`);
 
-
         let stringArray = outputText.split(/(\n)/);
         console.log(stringArray)
         for (const item of stringArray) {

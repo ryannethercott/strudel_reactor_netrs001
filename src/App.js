@@ -125,7 +125,7 @@ export default function StrudelDemo() {
 
     const handlePlay = () => {
         let outputText = Preprocess({ inputText: songText, songName: songName, volume: volume, speed: speed, pattern: pattern });
-        outputText = InstrumentControlsPreprocess({ inputText: songText, mute: mute});
+        //outputText = InstrumentControlsPreprocess({ inputText: songText, muteID: muteID })
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
@@ -164,7 +164,7 @@ export default function StrudelDemo() {
 
     const [pattern, setPattern] = useState('0');
 
-    const [mute, setMute] = useState(false);
+    const [muteID, setMuteID] = useState(false);
 
     const [open, setOpen] = useState(false);
 
@@ -178,7 +178,7 @@ export default function StrudelDemo() {
         if (state === "play") {
             handlePlay();
         }
-    }, [volume, speed, pattern]);
+    }, [volume, speed, pattern, muteID]);
 
     useEffect(() => {
 
@@ -220,18 +220,18 @@ export default function StrudelDemo() {
     return (
         <div>
             <div className="App-header">
-            <h2>Strudel Demo</h2>
+                <h2 className="row">Strudel Demo</h2>
             </div>
             <main>
                 <div className="container-fluid">
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name);  setSpeed(e.target.value) }} />
+                            <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>
                     <div className="row">
-                        <div className="col" style={{ maxHeight: '45vh', overflowY: 'auto' }}>
+                        <div style={{ maxHeight: '45vh', overflowY: 'auto' }}>
                             <PreProcessTextArea defaultValue={songText} onChange={(e) => setSongText(e.target.value)} onClick={() => setOpen(open => !open)} />
                         </div>
                     </div>
@@ -247,7 +247,7 @@ export default function StrudelDemo() {
                                 patternValue={pattern} onPatternChange={(e) => setPattern(e.target.value)}
                             />
                             <InstrumentControls
-                                muteInstrument={() => setMute(mute => !mute)}
+                                muteInstrument={(e) => {setMuteID(e.target.id)}}
                             />
                         </div>
                     </div>
