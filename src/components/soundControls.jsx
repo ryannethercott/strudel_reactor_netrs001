@@ -15,8 +15,8 @@ function GlobalSoundControls({
                 <div className="row m-1 form-control">
                     <div className="row">
                         <label htmlFor="speed" className="form-label">Speed</label>
-                        <input type="number" className="form-control" min="1" max="100" step="1"
-                            value={valueSpeed} onChange={onSpeedChange} id="speed" defaultValue="35" />
+                        <input type="number" className="form-control" min="1" max="80" step="1"
+                            value={valueSpeed} onChange={onSpeedChange} id="speed" defaultValue={valueSpeed} />
                     </div> 
                 </div>
 
@@ -32,19 +32,12 @@ function GlobalSoundControls({
 }
 
 export function InstrumentControls({
-    baselineVol, onBaselineVolChange,
-    baselineSpeed, onBaselineSpeedChange,
-    mainARPVol, onMainARPVolChange,
-    mainARPSpeed, onMainARPSpeedChange,
-    drumsVol, onDrumsVolChange,
-    drumsSpeed, onDrumsSpeedChange,
-    drums2Vol, onDrums2VolChange,
-    drums2Speed, onDrums2SpeedChange
+    muteInstrument
     }) {
     return (
         <>
             <div className="card-body">
-                <h3 className="card-title text-center">Instrument Sound Controls</h3>
+                <h3 className="card-title text-center">Mute Instrument</h3>
                 <div className="accordion" id="accordionExample">
 
                     <div className="accordion-item">
@@ -57,15 +50,7 @@ export function InstrumentControls({
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
                                     <label className="form-check-label" htmlFor="baselineMute">Mute</label>
-                                    <input className="form-check-input" type="checkbox" role="switch" id="baselineMute" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="baselineVol" className="form-label">Baseline volume: {baselineVol * 100}%</label>
-                                    <input type="range" className="form-range" min="0" max="1" step="0.01" defaultValue="1" onMouseUp={onBaselineVolChange} id="baselineVol" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="baselineSpeed" className="form-label">Speed</label>
-                                    <input type="number" className="form-control" min="0" max="1" step="0.01" value={baselineSpeed} onChange={onBaselineSpeedChange} id="baselineSpeed" />
+                                    <input className="form-check-input" type="checkbox" role="switch" id="baselineMute" onClick={muteInstrument} />
                                 </div>
                             </div>
                         </div>
@@ -81,15 +66,7 @@ export function InstrumentControls({
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
                                     <label className="form-check-label" htmlFor="MainARPMute">Mute</label>
-                                    <input className="form-check-input" type="checkbox" role="switch" id="MainARPMute" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="mainARPVol" className="form-label">Main ARP volume: {mainARPVol * 100}%</label>
-                                    <input type="range" className="form-range" min="0" max="1" step="0.01" defaultValue="1" onMouseUp={onMainARPVolChange} id="mainARPVol" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="mainARPSpeed" className="form-label">Speed</label>
-                                    <input type="number" className="form-control" min="0" max="1" step="0.01" value={mainARPSpeed} onChange={onMainARPSpeedChange} id="mainARPSpeed" />
+                                    <input className="form-check-input" type="checkbox" role="switch" id="MainARPMute" onClick={muteInstrument} />
                                 </div>
                             </div>
                         </div>
@@ -105,16 +82,8 @@ export function InstrumentControls({
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
                                     <label className="form-check-label" htmlFor="drumsMute">Mute</label>
-                                    <input className="form-check-input" type="checkbox" role="switch" id="drumsMute" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="drumsVol" className="form-label">Drums volume: {drumsVol * 100}%</label>
-                                    <input type="range" className="form-range" min="0" max="1" step="0.01" defaultValue="1" onMouseUp={onDrumsVolChange} id="drumsVol" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="drumsSpeed" className="form-label">Speed</label>
-                                    <input type="number" className="form-control" min="0" max="1" step="0.01" value={drumsSpeed} onChange={onDrumsSpeedChange} id="drumsSpeed" />
-                                </div>
+                                    <input className="form-check-input" type="checkbox" role="switch" id="drumsMute" onClick={muteInstrument} />
+                                </div> 
                             </div>
                         </div>
                     </div>
@@ -129,15 +98,7 @@ export function InstrumentControls({
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
                                     <label className="form-check-label" htmlFor="drums2Mute">Mute</label>
-                                    <input className="form-check-input" type="checkbox" role="switch" id="drums2Mute" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="drums2Vol" className="form-label">Drums 2 volume: {drums2Vol * 100}%</label>
-                                    <input type="range" className="form-range" min="0" max="1" step="0.01" defaultValue="1" onMouseUp={onDrums2VolChange} id="drums2Vol" />
-                                </div>
-                                <div className="row">
-                                    <label htmlFor="drums2Speed" className="form-label">Speed</label>
-                                    <input type="number" className="form-control" min="0" max="1" step="0.01" value={drums2Speed} onChange={onDrums2SpeedChange} id="drums2Speed" />
+                                    <input className="form-check-input" type="checkbox" role="switch" id="drums2Mute" onClick={muteInstrument} />
                                 </div>
                             </div>
                         </div>

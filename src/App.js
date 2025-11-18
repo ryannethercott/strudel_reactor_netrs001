@@ -31,8 +31,8 @@ export default function StrudelDemo() {
     const [d3Array, setD3Array] = useState([]);
     const [note, setNote] = useState('');
     const maxItems = 10;
-    const timeOut = 70;
-    const maxValue = 500;
+    const timeOut = 50;
+    const maxValue = 1000;
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -125,7 +125,7 @@ export default function StrudelDemo() {
 
     const handlePlay = () => {
         let outputText = Preprocess({ inputText: songText, songName: songName, volume: volume, speed: speed, pattern: pattern });
-        //outputText = InstrumentControlsPreprocess({ inputText: songText, baselineVol: baselineVol, mainARPVol: mainARPVol, drumsVol: drumsVol, drums2Vol: drums2Vol });
+        outputText = InstrumentControlsPreprocess({ inputText: songText, mute: mute});
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
     }
@@ -164,21 +164,7 @@ export default function StrudelDemo() {
 
     const [pattern, setPattern] = useState('0');
 
-    const [baselineVol, setBaselineVol] = useState('1');
-
-    const [baselineSpeed, setBaselineSpeed] = useState('0');
-
-    const [mainARPVol, setMainARPVol] = useState('1');
-
-    const [mainARPSpeed, setMainARPSpeed] = useState('0');
-
-    const [drumsVol, setDrumsVol] = useState('0');
-
-    const [drumsSpeed, setDrumsSpeed] = useState('0');
-
-    const [drums2Vol, setDrums2Vol] = useState('0');
-
-    const [drums2Speed, setDrums2Speed] = useState('0');
+    const [mute, setMute] = useState(false);
 
     const [open, setOpen] = useState(false);
 
@@ -241,7 +227,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name) }} />
+                            <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name);  setSpeed(e.target.value) }} />
                         </nav>
                     </div>
                     <div className="row">
@@ -261,14 +247,7 @@ export default function StrudelDemo() {
                                 patternValue={pattern} onPatternChange={(e) => setPattern(e.target.value)}
                             />
                             <InstrumentControls
-                                baselineVol={baselineVol} onBaselineVolChange={(e) => setBaselineVol(e.target.value)}
-                                blValueSpeed={baselineSpeed} onBLSpeedChange={(e) => setBaselineSpeed(e.target.value)}
-                                mainARPVolumeValue={mainARPVol} onMainARPVolumeChange={(e) => setMainARPVol(e.target.value)}
-                                mainARPValueSpeed={mainARPSpeed} onMainARPSpeedChange={(e) => setMainARPSpeed(e.target.value)}
-                                drumsVolumeValue={drumsVol} onDrumsVolumeChange={(e) => setDrumsVol(e.target.value)}
-                                drumsValueSpeed={drumsSpeed} onDrumsSpeedChange={(e) => setDrumsSpeed(e.target.value)}
-                                drums2VolumeValue={drums2Vol} onDrums2VolumeChange={(e) => setDrums2Vol(e.target.value)}
-                                drums2ValueSpeed={drums2Speed} onDrums2SpeedChange={(e) => setDrums2Speed(e.target.value)}
+                                muteInstrument={() => setMute(mute => !mute)}
                             />
                         </div>
                     </div>
