@@ -16,7 +16,6 @@ import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import PreProcessTextArea from './components/PreProcessTextArea';
-import SaveButtons from './components/SaveButtons';
 import SelectSongDropdown from './components/SelectSongDropdown';
 import D3Graph from './components/D3Graph';
 import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
@@ -125,7 +124,7 @@ export default function StrudelDemo() {
     const hasRun = useRef(false);
 
     const handlePlay = () => {
-        let outputText = Preprocess({ inputText: songText, volume: volume, speed: speed, pattern: pattern });
+        let outputText = Preprocess({ inputText: songText, songName: songName, volume: volume, speed: speed, pattern: pattern });
         //outputText = InstrumentControlsPreprocess({ inputText: songText, baselineVol: baselineVol, mainARPVol: mainARPVol, drumsVol: drumsVol, drums2Vol: drums2Vol });
         globalEditor.setCode(outputText);
         globalEditor.evaluate();
@@ -152,7 +151,9 @@ export default function StrudelDemo() {
             document.getElementById('proc').value = songText;
         }
     }
- 
+
+    const [songName, setSongName] = useState('Stranger Tune');
+
     const [songText, setSongText] = useState(stranger_tune);
 
     const [volume, setVolume] = useState('1');
@@ -240,8 +241,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SelectSongDropdown changeSong={(e) => handleSongChange(e.target.id)} />
-                            {/*<SaveButtons />*/}
+                            <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name) }} />
                         </nav>
                     </div>
                     <div className="row">
