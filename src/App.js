@@ -11,7 +11,7 @@ import { stranger_tune, outrun, Riding_the_46_Cycles } from './tunes';
 import { Collapse } from 'bootstrap';
 import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
-import { LogToFrequency } from './utils/NoteToFrequencyLogic'
+import { LogToNote, NoteToFrequency } from './utils/NoteToFrequencyLogic'
 import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
@@ -29,29 +29,26 @@ export default function StrudelDemo() {
         console.log(event.detail);
     };
 
-    const [d3Data, setD3Data] = useState('');
     const [d3Array, setD3Array] = useState([]);
-    //const [note, setNote] = useState('');
-    const maxItems = 20;
-    const maxValue = 14080;
+    const [note, setNote] = useState('');
+    const maxItems = 10;
+    const timeOut = 70;
+    const maxValue = 500;
 
     useEffect(() => {
-        let data = getD3Data();
-        setD3Data(data[data.length]);
+        const interval = setInterval(() => {
+            getD3Data().map((d) => setNote(LogToNote(d)))
+        }, timeOut);
+        return () => clearInterval(interval);
     }, []);
 
-    //useEffect(() => {
-    //    setNote(LogToNote(d3Data));
-    //    console.log("note: " + note)
-    //}, []);
-
     useEffect(() => {
-        let tempArray = [...d3Array, d3Data];
+        let tempArray = [...d3Array, note];
         if (tempArray.length > maxItems) {
             tempArray.shift()
         }
         setD3Array(tempArray); 
-    }, [d3Data]);
+    }, [note]);
 
     useEffect(() => {
 
@@ -63,7 +60,7 @@ export default function StrudelDemo() {
 
         const chartMargins = {
             left: 40,
-            right: 25,
+            right: 0,
             top: 25,
             bottom: 80
         }
@@ -77,7 +74,7 @@ export default function StrudelDemo() {
             .attr("text-anchor", "middle")
             .style("font-size", "18px")
             .style("font-weight", "bold")
-            .text("D3 graph");
+            .text("Note frequency Graph (Hz)");
 
         const barMargin = 10;
         const barWidth = w / d3Array.length;
@@ -86,20 +83,32 @@ export default function StrudelDemo() {
             .domain([0, maxValue])
             .range([h, 0]);
 
-        //let xScale = d3.scaleLinear()
-        //    .domain(maxValue)
-        //    .range([0, w])
-        //    .paddingInner(0.1)
-
         const chartGroup = svg.append('g')
             .classed('chartGroup', true)
             .attr('transform', `translate(${chartMargins.left},${chartMargins.top})`);
 
+        chartGroup.append("linearGradient")
+            .attr("id", "line-gradient")
+            .attr("gradientUnits", "userSpaceOnUse")
+            .attr("x1", 0)
+            .attr("y1", yScale(0))
+            .attr("x2", 0)
+            .attr("y2", yScale(maxValue))
+            .selectAll("stop")
+            .data([
+                { offset: "0%", color: "blue" }
+                ,{ offset: "50%", color: "green" }
+                ,{ offset: "100%", color: "yellow" }
+            ])
+            .enter().append("stop")
+            .attr("offset", (d) => d.offset)
+            .attr("stop-color", (d) => d.color);
+
         chartGroup
             .append('path')
-            .datum(d3Array.map((d) => LogToFrequency(d)))
+            .datum(d3Array.map((d) => NoteToFrequency(d)))
             .attr('fill', 'none')
-            .attr('stroke', 'steelblue')
+            .attr('stroke', 'url(#line-gradient)')
             .attr('stroke-width', 1.5)
             .attr('d', d3.line()
                 .x((d, i) => i * barWidth)
@@ -110,12 +119,6 @@ export default function StrudelDemo() {
         chartGroup.append('g')
             .classed('axis y', true)
             .call(yAxis);
-
-        //    let xAxis = d3.axisBottom(xScale)
-        //    chartGroup.append('g')
-        //        .attr('transform', `translate(0,${h})`)
-        //        .classed('axis x', true)
-        //        .call(xAxis);
 
     }, [d3Array]);
 
