@@ -59,6 +59,11 @@ export default function StrudelDemo() {
  
     const [songText, setSongText] = useState(stranger_tune);
 
+    const [d3Data, setD3Data] = useState(0);
+
+    const [d3Array, setD3Array] = useState([]);
+    const maxItems = 50;
+    const timeOut = 100;
 
     const [volume, setVolume] = useState('1');
 
@@ -91,6 +96,21 @@ export default function StrudelDemo() {
         var bsCollapse = new Collapse(myCollapse, { toggle: false })
         open ? bsCollapse.show() : bsCollapse.hide()
     }, [open])
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setD3Data(...d3Array);
+        }, timeOut);
+        return () => clearInterval(interval);
+    }, [])
+
+    useEffect(() => {
+        let tempArray = [...d3Array, d3Data];
+        if (tempArray.length > maxItems) {
+            tempArray.shift()
+        }
+        setD3Array(tempArray);
+    }, [d3Data])
 
     useEffect(() => {
         if (state === "play") {
