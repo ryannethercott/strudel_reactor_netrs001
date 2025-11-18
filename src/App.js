@@ -18,10 +18,110 @@ import PreProcessTextArea from './components/PreProcessTextArea';
 import SaveButtons from './components/SaveButtons';
 import SelectSongDropdown from './components/SelectSongDropdown';
 import D3Graph from './components/D3Graph';
+import * as d3 from "https://cdn.jsdelivr.net/npm/d3@7/+esm";
+
+function LogTofrequency(input) {
+    if (!input) { return 0 };
+    var stringArray = String(input).split(/(\s+)/);
+
+    for (const item of stringArray) {
+        if (item.startsWith('note:')) {
+            let val = item.substring(5)
+            return val;
+        }
+    }
+    return 0;
+}
 
 let globalEditor = null;
 
 export default function StrudelDemo() {
+    const [d3Data, setD3Data] = useState(0);
+    const [d3Array, setD3Array] = useState([]);
+    const maxItems = 50;
+    const timeOut = 0.1;
+    const maxValue = 1;
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setD3Data(getD3Data);
+        }, timeOut)
+        return () => clearInterval(interval);
+    }, []);
+
+    useEffect(() => {
+        let tempArray = [...d3Array, d3Data];
+        if (tempArray.length > maxItems) {
+            tempArray.shift()
+        }
+        setD3Array(tempArray);
+    }, [d3Data]);
+
+    useEffect(() => {
+
+        const svg = d3.select('svg');
+        svg.selectAll("*").remove();
+
+        let w = svg.node().getBoundingClientRect().width
+        let h = svg.node().getBoundingClientRect().height
+
+        const chartMargins = {
+            left: 40,
+            right: 25,
+            top: 25,
+            bottom: 80
+        }
+
+        w = w - (chartMargins.left + chartMargins.right);
+        h = h - (chartMargins.top + chartMargins.bottom);
+
+        svg.append("text")
+            .attr("x", (w / 2))
+            .attr("y", chartMargins.top)
+            .attr("text-anchor", "middle")
+            .style("font-size", "18px")
+            .style("font-weight", "bold")
+            .text("D3 graph");
+
+        const barMargin = 10;
+        const barWidth = w / d3Array.length;
+
+        let yScale = d3.scaleLinear()
+            .domain([0, maxValue])
+            .range([h, 0]);
+
+        //let xScale = d3.scaleLinear()
+        //    .domain(maxValue)
+        //    .range([0, w])
+        //    .paddingInner(0.1)
+
+        const chartGroup = svg.append('g')
+            .classed('chartGroup', true)
+            .attr('transform', `translate(${chartMargins.left},${chartMargins.top})`);
+
+        chartGroup
+            .append('path')
+            .datum(d3Array.map((d) => LogToNum(d)))
+            .attr('fill', 'none')
+            .attr('stroke', 'steelblue')
+            .attr('stroke-width', 1.5)
+            .attr('d', d3.line()
+                .x((d, i) => i * barWidth)
+                .y((d, i) => yScale(d))
+            )
+
+        let yAxis = d3.axisLeft(yScale);
+        chartGroup.append('g')
+            .classed('axis y', true)
+            .call(yAxis);
+
+        //    let xAxis = d3.axisBottom(xScale)
+        //    chartGroup.append('g')
+        //        .attr('transform', `translate(0,${h})`)
+        //        .classed('axis x', true)
+        //        .call(xAxis);
+
+    }, [d3Array]);
 
     const handleD3Data = (event) => {
         console.log(event.detail);
@@ -59,12 +159,6 @@ export default function StrudelDemo() {
  
     const [songText, setSongText] = useState(stranger_tune);
 
-    const [d3Data, setD3Data] = useState(0);
-
-    const [d3Array, setD3Array] = useState([]);
-    const maxItems = 50;
-    const timeOut = 100;
-
     const [volume, setVolume] = useState('1');
 
     const [speed, setSpeed] = useState('35');
@@ -95,22 +189,7 @@ export default function StrudelDemo() {
         var myCollapse = document.getElementById('collapseTarget')
         var bsCollapse = new Collapse(myCollapse, { toggle: false })
         open ? bsCollapse.show() : bsCollapse.hide()
-    }, [open])
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setD3Data(...d3Array);
-        }, timeOut);
-        return () => clearInterval(interval);
-    }, [])
-
-    useEffect(() => {
-        let tempArray = [...d3Array, d3Data];
-        if (tempArray.length > maxItems) {
-            tempArray.shift()
-        }
-        setD3Array(tempArray);
-    }, [d3Data])
+    }, [open]);
 
     useEffect(() => {
         if (state === "play") {
@@ -199,7 +278,7 @@ export default function StrudelDemo() {
                     </div>
                     <div>
                         <div>
-                            {/*<D3Graph data={getD3Data} />*/}
+                            <D3Graph dataSet={d3Data} d3Array={d3Array} />
                         </div>
                     </div>
                 </div>
