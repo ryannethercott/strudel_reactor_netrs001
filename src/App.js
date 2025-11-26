@@ -15,6 +15,7 @@ import { LogToNote, NoteToFrequency } from './utils/NoteToFrequencyLogic'
 import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
+import SaveLoadButtons from './components/SaveLoadButtons';
 import PreProcessTextArea from './components/PreProcessTextArea';
 import SelectSongDropdown from './components/SelectSongDropdown';
 import D3Graph from './components/D3Graph';
@@ -168,6 +169,14 @@ export default function StrudelDemo() {
 
     const [open, setOpen] = useState(false);
 
+    const handleSave = () => {
+
+    }
+
+    const handleLoad = () => {
+
+    }
+
     useEffect(() => {
         var myCollapse = document.getElementById('collapseTarget')
         var bsCollapse = new Collapse(myCollapse, { toggle: false })
@@ -227,6 +236,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
+                            <SaveLoadButtons save={handleSave} load={handleLoad} />
                             <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>

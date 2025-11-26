@@ -3,28 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\preprocesslogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\utils\\preprocesslogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundcontrols.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\soundcontrols.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\tunes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\preprocesstextarea.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\preprocesstextarea.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\playbuttons.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\playbuttons.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\tunes.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:readme.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,84 +22,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 0,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PlayButtons.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\PlayButtons.jsx",
-              "RelativeDocumentMoniker": "src\\components\\PlayButtons.jsx",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\PlayButtons.jsx",
-              "RelativeToolTip": "src\\components\\PlayButtons.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAMAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T03:25:52.716Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 0,
               "Title": "tunes.js",
               "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js",
               "RelativeDocumentMoniker": "src\\tunes.js",
               "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js",
               "RelativeToolTip": "src\\tunes.js",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAAACcAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAGcAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-07T03:02:22.331Z"
+              "WhenOpened": "2025-11-24T03:40:30.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PreprocessLogic.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\PreprocessLogic.jsx",
-              "RelativeDocumentMoniker": "src\\utils\\PreprocessLogic.jsx",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\PreprocessLogic.jsx",
-              "RelativeToolTip": "src\\utils\\PreprocessLogic.jsx",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAAACIAAAA7AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T02:21:02.991Z",
+              "DocumentIndex": 2,
+              "Title": "README.md",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\README.md",
+              "RelativeDocumentMoniker": "README.md",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\README.md",
+              "RelativeToolTip": "README.md",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2025-11-24T02:56:11.516Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "soundControls.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
-              "RelativeDocumentMoniker": "src\\components\\soundControls.jsx",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
-              "RelativeToolTip": "src\\components\\soundControls.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAABoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T01:44:05.681Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PreProcessTextArea.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\PreProcessTextArea.jsx",
-              "RelativeDocumentMoniker": "src\\components\\PreProcessTextArea.jsx",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\PreProcessTextArea.jsx",
-              "RelativeToolTip": "src\\components\\PreProcessTextArea.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-07T01:15:05.994Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "App.js",
               "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\App.js",
               "RelativeDocumentMoniker": "src\\App.js",
               "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\App.js",
               "RelativeToolTip": "src\\App.js",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAAAIQAAABiAAAAAAAAAA==",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-07T00:35:40.228Z"
+              "WhenOpened": "2025-11-24T01:50:57.591Z",
+              "EditorCaption": ""
             }
           ]
         }
