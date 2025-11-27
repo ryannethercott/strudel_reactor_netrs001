@@ -12,10 +12,10 @@ function saveLogic({
         volume: volume,
         speed: speed,
         pattern: pattern,
-        baselineMute: baselineMute,
-        main_arpMute: main_arpMute,
-        drumsMute: drumsMute,
-        drums2Mute: drums2Mute
+        baselineMute: false,
+        main_arpMute: false,
+        drumsMute: false,
+        drums2Mute: false
     };
 
     fetch(`http://localhost:5043/api/SettingsAPI/PostSettings`, {

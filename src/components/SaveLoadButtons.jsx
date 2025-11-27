@@ -2,11 +2,14 @@ function SaveLoadButtons({ save, load }) {
     return (
         <>
             <div className="col-3 align left">
-                <input type="button" className="btn-check" name="btnradio" id="save" onClick={ save } />
-                <label className="btn btn-outline-success m-1" htmlFor="save">Save</label>
-
-                <input type="button" className="btn-check" name="btnradio" id="load" onClick={load} />
-                <label className="btn btn-outline-warning m-1" htmlFor="load">Load</label>
+                <div class="input-group mb-3">
+                    <input type="text" className="form-control" placeholder="Enter settings name to save" aria-label="saveSettingName" aria-describedby="save" />
+                    <button class="btn btn-outline-success" type="submit" id="save" onClick={ save }>Save</button>
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" className="form-control" placeholder="Enter settings name to load" aria-label="loadSettingsName" aria-describedby="load" />
+                    <button class="btn btn-outline-warning" type="submit" id="load" onClick={load}>Load</button>
+                </div>
             </div>
         </>
     );

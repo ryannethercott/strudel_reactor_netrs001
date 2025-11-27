@@ -170,8 +170,10 @@ export default function StrudelDemo() {
 
     const [open, setOpen] = useState(false);
 
+    const [settingsName, setSettingsName] = useState('');
+
     const handleSave = () => {
-        SaveLogic({ volume: volume, speed: speed, pattern: pattern, baselineMute: document.getElementById('baseline').prop('checked'), main_arpMute: document.getElementById('main_arp').prop('checked'), drumsMute: document.getElementById('drums').prop('checked'), drums2Mute: document.getElementById('drums2').prop('checked') })
+        SaveLogic({ volume: volume, speed: speed, pattern: pattern })
     }
 
     const handleLoad = () => {
@@ -237,7 +239,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SaveLoadButtons save={handleSave()} load={handleLoad()} />
+                            <SaveLoadButtons save={(e) => { setSettingsName(e.target.value); handleSave() }} load={handleLoad()} />
                             <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>
