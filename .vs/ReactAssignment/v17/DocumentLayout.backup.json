@@ -22,21 +22,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "tunes.js",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js",
-              "RelativeDocumentMoniker": "src\\tunes.js",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js",
-              "RelativeToolTip": "src\\tunes.js",
-              "ViewState": "AgIAADwAAAAAAAAAAAAAAGcAAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-24T03:40:30.585Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
@@ -51,6 +38,19 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "tunes.js",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js",
+              "RelativeDocumentMoniker": "src\\tunes.js",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\tunes.js",
+              "RelativeToolTip": "src\\tunes.js",
+              "ViewState": "AgIAADwAAAAAAAAAAAAAAGcAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-24T03:40:30.585Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 2,
               "Title": "README.md",
               "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\README.md",
@@ -59,8 +59,7 @@
               "RelativeToolTip": "README.md",
               "ViewState": "AgIAACoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-11-24T02:56:11.516Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T02:56:11.516Z"
             },
             {
               "$type": "Document",
@@ -72,8 +71,7 @@
               "RelativeToolTip": "src\\App.js",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-24T01:50:57.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-11-24T01:50:57.591Z"
             }
           ]
         }

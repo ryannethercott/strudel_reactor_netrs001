@@ -49,7 +49,7 @@ export function InstrumentControls({
                         <div id="Bassline" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
-                                    <label className="form-check-label" htmlFor="baselineMute">Mute</label>
+                                    <label className="form-check-label" htmlFor="baseline">Mute</label>
                                     <input className="form-check-input" type="checkbox" role="switch" id="baseline" onClick={muteInstrument} />
                                 </div>
                             </div>
@@ -65,7 +65,7 @@ export function InstrumentControls({
                         <div id="Main_arp" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
-                                    <label className="form-check-label" htmlFor="MainARPMute">Mute</label>
+                                    <label className="form-check-label" htmlFor="main_arp">Mute</label>
                                     <input className="form-check-input" type="checkbox" role="switch" id="main_arp" onClick={muteInstrument} />
                                 </div>
                             </div>
@@ -81,7 +81,7 @@ export function InstrumentControls({
                         <div id="Drums" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
-                                    <label className="form-check-label" htmlFor="drumsMute">Mute</label>
+                                    <label className="form-check-label" htmlFor="drums">Mute</label>
                                     <input className="form-check-input" type="checkbox" role="switch" id="drums" onClick={muteInstrument} />
                                 </div> 
                             </div>
@@ -97,7 +97,7 @@ export function InstrumentControls({
                         <div id="Drums2" className="accordion-collapse collapse" data-bs-parent="#accordionExample">
                             <div className="accordion-body">
                                 <div className="form-check form-switch mb-3">
-                                    <label className="form-check-label" htmlFor="drums2Mute">Mute</label>
+                                    <label className="form-check-label" htmlFor="drums2">Mute</label>
                                     <input className="form-check-input" type="checkbox" role="switch" id="drums2" onClick={muteInstrument} />
                                 </div>
                             </div>

@@ -13,6 +13,7 @@ import console_monkey_patch, { getD3Data } from './console-monkey-patch';
 import Preprocess from './utils/PreprocessLogic';
 import { LogToNote, NoteToFrequency } from './utils/NoteToFrequencyLogic'
 import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
+import SaveLogic from './utils/SaveLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import SaveLoadButtons from './components/SaveLoadButtons';
@@ -170,7 +171,7 @@ export default function StrudelDemo() {
     const [open, setOpen] = useState(false);
 
     const handleSave = () => {
-
+        SaveLogic({ volume: volume, speed: speed, pattern: pattern, baselineMute: document.getElementById('baseline').value, main_arpMute: document.getElementById('main_arp').value, drumsMute: document.getElementById('drums').value, drums2Mute: document.getElementById('drums2').value })
     }
 
     const handleLoad = () => {
@@ -236,7 +237,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SaveLoadButtons save={handleSave} load={handleLoad} />
+                            <SaveLoadButtons save={handleSave()} load={handleLoad()} />
                             <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>
