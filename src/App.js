@@ -173,7 +173,7 @@ export default function StrudelDemo() {
     const [settingsName, setSettingsName] = useState('');
 
     const handleSave = () => {
-        SaveLogic({ volume: volume, speed: speed, pattern: pattern })
+        SaveLogic({ settingsName: settingsName, volume: volume, speed: speed, pattern: pattern })
     }
 
     const handleLoad = () => {

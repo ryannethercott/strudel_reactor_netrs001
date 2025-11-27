@@ -1,4 +1,5 @@
 function saveLogic({
+    settingsName,
     volume,
     speed,
     pattern,
@@ -9,13 +10,14 @@ function saveLogic({
 }) {
 
     const settings = {
+        settingsName: settingsName,
         volume: volume,
         speed: speed,
         pattern: pattern,
-        baselineMute: false,
-        main_arpMute: false,
-        drumsMute: false,
-        drums2Mute: false
+        baselineMute: 0,
+        main_arpMute: 0,
+        drumsMute: 0,
+        drums2Mute: 0
     };
 
     fetch(`http://localhost:5043/api/SettingsAPI/PostSettings`, {
@@ -28,5 +30,13 @@ function saveLogic({
     })
         .then(response => response.json())
         .catch(error => console.error('Unable to add settings.', error));
+    
+    return (
+        <>
+            <div className="alert alert-success">
+                <strong>Success!</strong> settings saved to database.
+            </div>
+        </>
+    )
 }
 export default saveLogic;
