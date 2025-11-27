@@ -171,7 +171,7 @@ export default function StrudelDemo() {
     const [open, setOpen] = useState(false);
 
     const handleSave = () => {
-        SaveLogic({ volume: volume, speed: speed, pattern: pattern, baselineMute: document.getElementById('baseline').value, main_arpMute: document.getElementById('main_arp').value, drumsMute: document.getElementById('drums').value, drums2Mute: document.getElementById('drums2').value })
+        SaveLogic({ volume: volume, speed: speed, pattern: pattern, baselineMute: document.getElementById('baseline').prop('checked'), main_arpMute: document.getElementById('main_arp').prop('checked'), drumsMute: document.getElementById('drums').prop('checked'), drums2Mute: document.getElementById('drums2').prop('checked') })
     }
 
     const handleLoad = () => {
