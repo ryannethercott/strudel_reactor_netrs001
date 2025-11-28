@@ -14,6 +14,7 @@ import Preprocess from './utils/PreprocessLogic';
 import { LogToNote, NoteToFrequency } from './utils/NoteToFrequencyLogic'
 import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import SaveLogic from './utils/SaveLogic';
+import LoadLogic from './utils/LoadLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import SaveLoadButtons from './components/SaveLoadButtons';
@@ -170,14 +171,14 @@ export default function StrudelDemo() {
 
     const [open, setOpen] = useState(false);
 
-    const [settingsName, setSettingsName] = useState('');
+    const [settingName, setSettingName] = useState('');
 
     const handleSave = () => {
-        SaveLogic({ settingsName: settingsName, volume: volume, speed: speed, pattern: pattern })
+        SaveLogic({ settingName: settingName, volume: volume, speed: speed, pattern: pattern })
     }
 
     const handleLoad = () => {
-
+        LoadLogic();
     }
 
     useEffect(() => {
@@ -239,7 +240,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SaveLoadButtons save={(e) => { setSettingsName(e.target.value); handleSave() }} load={handleLoad()} />
+                            <SaveLoadButtons save={(e) => { setSettingName(e.target.value); handleSave() }} load={handleLoad()} />
                             <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>

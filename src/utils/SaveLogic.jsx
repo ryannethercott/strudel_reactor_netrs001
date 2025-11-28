@@ -1,5 +1,5 @@
-function saveLogic({
-    settingsName,
+function SaveLogic({
+    settingName,
     volume,
     speed,
     pattern,
@@ -10,14 +10,14 @@ function saveLogic({
 }) {
 
     const settings = {
-        settingsName: settingsName,
+        settingName: settingName,
         volume: volume,
         speed: speed,
         pattern: pattern,
-        baselineMute: 0,
-        main_arpMute: 0,
-        drumsMute: 0,
-        drums2Mute: 0
+        baselineMute: false,
+        main_arpMute: false,
+        drumsMute: false,
+        drums2Mute: false
     };
 
     fetch(`http://localhost:5043/api/SettingsAPI/PostSettings`, {
@@ -39,4 +39,4 @@ function saveLogic({
         </>
     )
 }
-export default saveLogic;
+export default SaveLogic;
