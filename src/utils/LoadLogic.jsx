@@ -1,6 +1,6 @@
 function LoadLogic() {
 
-    let settingsName = document.querySelector('[aria-label="loadSettingsName"]').value;
+    let settingsName = document.querySelector('[name="loadSettingsName"]').value;
     
     fetch(`http://localhost:5043/api/SettingsAPI/GetSettings/?settingsSearch=${settingsName}`)
         .then(response => response.json())

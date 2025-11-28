@@ -3,8 +3,8 @@
   "WorkspaceRootPath": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\savelogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\utils\\savelogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\loadlogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\utils\\loadlogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\saveloadbuttons.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
@@ -13,6 +13,14 @@
     {
       "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\app.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\savelogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\utils\\savelogic.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|c:\\users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundcontrols.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1C538C04-AF09-44AC-9272-6DDEAA808F25}|ReactAssignment.esproj|solutionrelative:src\\components\\soundcontrols.jsx||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,32 +30,46 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SaveLogic.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\SaveLogic.jsx",
-              "RelativeDocumentMoniker": "src\\utils\\SaveLogic.jsx",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\SaveLogic.jsx",
-              "RelativeToolTip": "src\\utils\\SaveLogic.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-27T08:32:23.882Z",
+              "DocumentIndex": 2,
+              "Title": "App.js",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\App.js",
+              "RelativeDocumentMoniker": "src\\App.js",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\App.js",
+              "RelativeToolTip": "src\\App.js",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAAALQAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2025-11-24T01:50:57.591Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "SaveLoadButtons.jsx",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\SaveLoadButtons.jsx",
-              "RelativeDocumentMoniker": "src\\components\\SaveLoadButtons.jsx",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\SaveLoadButtons.jsx",
-              "RelativeToolTip": "src\\components\\SaveLoadButtons.jsx",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAACiAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LoadLogic.jsx",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\LoadLogic.jsx",
+              "RelativeDocumentMoniker": "src\\utils\\LoadLogic.jsx",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\LoadLogic.jsx",
+              "RelativeToolTip": "src\\utils\\LoadLogic.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABRAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
-              "WhenOpened": "2025-11-27T08:24:36.945Z",
+              "WhenOpened": "2025-11-28T03:41:21.349Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "soundControls.jsx",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
+              "RelativeDocumentMoniker": "src\\components\\soundControls.jsx",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\soundControls.jsx",
+              "RelativeToolTip": "src\\components\\soundControls.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-11-28T06:24:24.25Z",
               "EditorCaption": ""
             },
             {
@@ -64,15 +86,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "App.js",
-              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\App.js",
-              "RelativeDocumentMoniker": "src\\App.js",
-              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\App.js",
-              "RelativeToolTip": "src\\App.js",
-              "ViewState": "AgIAAJcAAAAAAAAAAAAAAK8AAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2025-11-24T01:50:57.591Z",
+              "DocumentIndex": 3,
+              "Title": "SaveLogic.jsx",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\SaveLogic.jsx",
+              "RelativeDocumentMoniker": "src\\utils\\SaveLogic.jsx",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\utils\\SaveLogic.jsx",
+              "RelativeToolTip": "src\\utils\\SaveLogic.jsx",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwCkAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-11-27T08:32:23.882Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SaveLoadButtons.jsx",
+              "DocumentMoniker": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\SaveLoadButtons.jsx",
+              "RelativeDocumentMoniker": "src\\components\\SaveLoadButtons.jsx",
+              "ToolTip": "C:\\Users\\ryann\\source\\repos\\strudel_reactor_netrs001\\src\\components\\SaveLoadButtons.jsx",
+              "RelativeToolTip": "src\\components\\SaveLoadButtons.jsx",
+              "ViewState": "AgIAAAAAAAAAAAAAAAA6wAUAAAB0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003663|",
+              "WhenOpened": "2025-11-27T08:24:36.945Z",
               "EditorCaption": ""
             }
           ]
