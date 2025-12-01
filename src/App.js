@@ -14,7 +14,6 @@ import Preprocess from './utils/PreprocessLogic';
 import { LogToNote, NoteToFrequency } from './utils/NoteToFrequencyLogic'
 import InstrumentControlsPreprocess from './utils/InstrumentControlsLogic';
 import SaveLogic from './utils/SaveLogic';
-import LoadLogic from './utils/LoadLogic';
 import GlobalSoundControls, { InstrumentControls } from './components/soundControls';
 import PlayButtons from './components/PlayButtons';
 import SaveLoadButtons from './components/SaveLoadButtons';
@@ -173,25 +172,34 @@ export default function StrudelDemo() {
 
     const [settingName, setSettingName] = useState('');
 
-    const [loadData, setLoadData] = useState([]);
+    const [loadData, setLoadData] = useState();
 
     const handleSave = () => {
         SaveLogic({ settingName: settingName, volume: volume, speed: speed, pattern: pattern })
     }
 
     const handleLoad = () => {
-        let settingsName = document.querySelector('[name="loadSettingsName"]').value;
+        if (loadData.length === 0) {
+            alert("Load data not found or empty")
+        }
+        else {
+            alert("Load Successful!")   
+            setVolume(loadData[0].volumeLevel / 100);
+            document.getElementById("volume").value = loadData.volumeLevel / 100;
+            setSpeed(loadData[0].songSpeed);
+            document.getElementById("speed").value = loadData.songSpeed;
+            setPattern(loadData[0].pattern);
+            document.getElementById("pattern").value = loadData.pattern;
+        }
+        console.log(loadData)
+    }
 
-        fetch(`http://localhost:5043/api/SettingsAPI/GetSettings/?settingsSearch=${settingsName}`)
+    useEffect(() => {
+        fetch(`http://localhost:5043/api/SettingsAPI/GetSettings/?settingsSearch=${settingName}`)
             .then(response => response.json())
             .then(data => setLoadData(data))
             .catch(error => console.error('Unable to load settings.', error));
-
-        
-        setVolume(loadData.VolumeLevel)
-        setSpeed(loadData.SongSpeed)
-        setPattern(loadData.Pattern)
-    }
+    }, [settingName])
 
     useEffect(() => {
         var myCollapse = document.getElementById('collapseTarget')
@@ -252,7 +260,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SaveLoadButtons save={(e) => { setSettingName(e.target.value); handleSave() }} load={() => { handleLoad() }} />
+                            <SaveLoadButtons save={(e) => { setSettingName(e.target.value); handleSave() }} load={(e) => { setSettingName(e.target.value); handleLoad() }} />
                             <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>
