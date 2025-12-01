@@ -4,7 +4,7 @@ function LoadLogic() {
     
     fetch(`http://localhost:5043/api/SettingsAPI/GetSettings/?settingsSearch=${settingsName}`)
         .then(response => response.json())
-        .then(data => buildData(data))
+        .then(data => setData(data))
         .catch(error => console.error('Unable to load settings.', error));
 
     return (
@@ -12,7 +12,8 @@ function LoadLogic() {
     )
 }
 
-function buildData(data) {
+function setData(data) {
+
     document.querySelector('[id="volume"]').setAttribute('value', data.VolumeLevel);
     document.querySelector('[id="speed"]').setAttribute('value', data.SongSpeed);
     document.querySelector('[id="pattern"]').setAttribute('value', data.Pattern);

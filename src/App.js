@@ -1,7 +1,7 @@
 import './App.css';
 import { useCallback, useEffect, useRef, useState } from "react";
 import { StrudelMirror } from '@strudel/codemirror';
-import { evalScope, sound } from '@strudel/core';
+import { evalScope, set, sound } from '@strudel/core';
 import { drawPianoroll } from '@strudel/draw';
 import { initAudioOnFirstClick } from '@strudel/webaudio';
 import { transpiler } from '@strudel/transpiler';
@@ -173,15 +173,24 @@ export default function StrudelDemo() {
 
     const [settingName, setSettingName] = useState('');
 
+    const [loadData, setLoadData] = useState([]);
+
     const handleSave = () => {
         SaveLogic({ settingName: settingName, volume: volume, speed: speed, pattern: pattern })
     }
 
     const handleLoad = () => {
-        var load = LoadLogic();
-        setVolume(load[0]);
-        setSpeed(load[1]);
-        setPattern(load[2]);
+        let settingsName = document.querySelector('[name="loadSettingsName"]').value;
+
+        fetch(`http://localhost:5043/api/SettingsAPI/GetSettings/?settingsSearch=${settingsName}`)
+            .then(response => response.json())
+            .then(data => setLoadData(data))
+            .catch(error => console.error('Unable to load settings.', error));
+
+        
+        setVolume(loadData.VolumeLevel)
+        setSpeed(loadData.SongSpeed)
+        setPattern(loadData.Pattern)
     }
 
     useEffect(() => {
