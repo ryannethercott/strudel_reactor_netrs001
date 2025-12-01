@@ -154,7 +154,7 @@ export default function StrudelDemo() {
         }
     }
 
-    const [songName, setSongName] = useState('Stranger Tune');
+    const [songName, setSongName] = useState('stranger_tune');
 
     const [songText, setSongText] = useState(stranger_tune);
 
@@ -172,34 +172,49 @@ export default function StrudelDemo() {
 
     const [settingName, setSettingName] = useState('');
 
-    const [loadData, setLoadData] = useState();
+    const [loadSettingData, setLoadSettingData] = useState();
+
+    const [loadSongData, setLoadSongData] = useState();
 
     const handleSave = () => {
         SaveLogic({ settingName: settingName, volume: volume, speed: speed, pattern: pattern, songName: songName, songText: songText })
     }
 
     const handleLoad = () => {
-        if (loadData.length === 0) {
+        if (loadSettingData.length === 0) {
             alert("Load data not found or empty")
         }
         else {
+            setVolume(loadSettingData[0].volumeLevel);
+            document.getElementById("volume").value = loadSettingData.volumeLevel;
+            setSpeed(loadSettingData[0].songSpeed);
+            document.getElementById("speed").value = loadSettingData.songSpeed;
+            setPattern(loadSettingData[0].pattern);
+            document.getElementById("pattern").value = loadSettingData.pattern;
+
+            setSongName(loadSongData.songName);
+            setSongText(loadSongData.songText);
             alert("Load Successful!")   
-            setVolume(loadData[0].volumeLevel);
-            document.getElementById("volume").value = loadData.volumeLevel;
-            setSpeed(loadData[0].songSpeed);
-            document.getElementById("speed").value = loadData.songSpeed;
-            setPattern(loadData[0].pattern);
-            document.getElementById("pattern").value = loadData.pattern;
         }
-        console.log(loadData)
+        console.log(loadSettingData)
     }
 
     useEffect(() => {
-        fetch(`http://localhost:5043/api/SettingsAPI/GetSettings/?settingsSearch=${settingName}`)
+        fetch(`http://localhost:5043/api/SettingsAPI/GetSettings?settingsSearch=${settingName}`)
             .then(response => response.json())
-            .then(data => setLoadData(data))
+            .then(data => setLoadSettingData(data))
             .catch(error => console.error('Unable to load settings.', error));
-    }, [settingName])
+    }, [settingName]);
+
+    //useEffect(() => {
+    //    fetch(`http://localhost:5043/api/SongAPI/GetSong?songSearch=${songName}`)
+    //        .then(response => response.json())
+    //        .then(data => setLoadSongData(data))
+    //        .catch(error => console.error('Unable to load settings.', error));
+    //    console.log(songName)
+    //}, [songName]);
+
+
 
     useEffect(() => {
         var myCollapse = document.getElementById('collapseTarget')
