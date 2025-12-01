@@ -178,7 +178,10 @@ export default function StrudelDemo() {
     }
 
     const handleLoad = () => {
-        LoadLogic();
+        var load = LoadLogic();
+        setVolume(load[0]);
+        setSpeed(load[1]);
+        setPattern(load[2]);
     }
 
     useEffect(() => {
@@ -240,7 +243,7 @@ export default function StrudelDemo() {
                     <div className="row">
                         <nav>
                             <PlayButtons onStop={() => { setState("stop"); handleStop() }} onPlay={() => { setState("play"); handlePlay() }} />
-                            <SaveLoadButtons save={(e) => { setSettingName(e.target.value); handleSave() }} load={handleLoad()} />
+                            <SaveLoadButtons save={(e) => { setSettingName(e.target.value); handleSave() }} load={() => { handleLoad() }} />
                             <SelectSongDropdown songName={songName} changeSong={(e) => { handleSongChange(e.target.id); setSongName(e.target.name); setSpeed(e.target.value) }} />  
                         </nav>
                     </div>
