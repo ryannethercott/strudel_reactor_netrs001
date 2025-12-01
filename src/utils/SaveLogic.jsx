@@ -17,6 +17,12 @@ async function SaveLogic({
         body: JSON.stringify(settings)
     })
         .catch(error => console.error('Unable to add settings.', error));
+
+    return (
+        alert("Saved settings!")
+    )
 }
+
+
 
 export default SaveLogic;

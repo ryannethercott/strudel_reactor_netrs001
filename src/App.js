@@ -184,8 +184,8 @@ export default function StrudelDemo() {
         }
         else {
             alert("Load Successful!")   
-            setVolume(loadData[0].volumeLevel / 100);
-            document.getElementById("volume").value = loadData.volumeLevel / 100;
+            setVolume(loadData[0].volumeLevel);
+            document.getElementById("volume").value = loadData.volumeLevel;
             setSpeed(loadData[0].songSpeed);
             document.getElementById("speed").value = loadData.songSpeed;
             setPattern(loadData[0].pattern);
